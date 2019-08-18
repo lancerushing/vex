@@ -39,23 +39,23 @@ void stopMotors() {
 }
 
 void turnLeft() {
-    motorL.rotateFor(-1, rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(1, rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(-1, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(1, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
 }
 
 void turnRight() {
-    motorL.rotateFor(1, rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(-1, rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(1,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(-1,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
 }
 
 void moveForward() {
-    motorL.rotateFor(1, rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(1, rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
 }
 
 void moveBackward() {
-    motorL.rotateFor(-1, rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(-1, rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(-1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(-1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
 }
 
 void startControllerListeners() {

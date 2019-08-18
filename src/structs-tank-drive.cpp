@@ -37,8 +37,8 @@ void showStatus() {
 // Thread to set motors based on the input struct
 void setDrive() {
      while (true) {
-        motorL.spin(fwd, inputs.left, velocityUnits::pct);
-        motorR.spin(fwd, inputs.right, velocityUnits::pct);
+        motorL.spin(vex::directionType::fwd, inputs.left, vex::velocityUnits::pct);
+        motorR.spin(vex::directionType::fwd, inputs.right, vex::velocityUnits::pct);
         vex::this_thread::sleep_for(10); // Let other threads run
      }
 }
@@ -54,8 +54,8 @@ void setRight() {
 
 // Setup all the listners in one place
 void startControllerListeners() {
-    Controller1.Axis3.change(setLeft);      
-    Controller1.Axis2.change(setRight);
+    Controller1.Axis3.changed(setLeft);      
+    Controller1.Axis2.changed(setRight);
 }
 
 
