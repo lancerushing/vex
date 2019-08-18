@@ -43,7 +43,7 @@ void setDrive() {
      }
 }
 
-// lisenter callbacks for controller events
+// listeners controller events
 
 void setLeft() {
     inputs.left = Controller1.Axis3.value();
@@ -53,14 +53,14 @@ void setRight() {
 }
 
 // Setup all the listners in one place
-void startChangeListeners() {
+void startControllerListeners() {
     Controller1.Axis3.change(setLeft);      
     Controller1.Axis2.change(setRight);
 }
 
 
 int main() {
-    startChangeListeners();
+    startControllerListeners();
     vex::thread threadStatus( showStatus );  
     vex::thread threadSetDrive( setDrive );
 }
