@@ -1,10 +1,12 @@
 /**
  * Example of how to start multiple threads.
+ * @author Lance Rushing <lancerushing@gmail.com>
+ * @see https://github.com/lancerushing/vex
  */
 
 #include "vex.h"
 
-// Global Variables
+// Configure Robot Hardware
 vex::brain Brain;
 
 void myThread1() {
@@ -13,7 +15,7 @@ void myThread1() {
     while(true) {
         Brain.Screen.printAt(10, 40, "myThread1 %d", count++);
       
-        vex::this_thread::sleep_for(100); // Let other threads run
+        vex::this_thread::sleep_for(100); // Sleep, and let other threads run
     }
 }
 
@@ -23,7 +25,7 @@ void myThread2() {
     while(true) {
         Brain.Screen.printAt(10, 60, "myThread2 %d", count++);
    
-        vex::this_thread::sleep_for(200); // Let other threads run
+        vex::this_thread::sleep_for(200); // Sleep, and let other threads run
     }
 }
 
@@ -34,7 +36,7 @@ int main() {
 
     Brain.Screen.printAt(0, 110, "Theads have Started.");
     
-    // Wait, then stop the threads 
+    // Wait, then stop (interrupt) the threads 
     vex::this_thread::sleep_for(10000); // 10 seconds
     t1.interrupt();
     t2.interrupt();

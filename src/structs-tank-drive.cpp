@@ -1,5 +1,7 @@
 /**
  * Example of using a struct to maintain desired input state for tank drive
+ * @author Lance Rushing <lancerushing@gmail.com>
+ * @see https://github.com/lancerushing/vex
  */
 #include "vex.h"
 
@@ -34,7 +36,7 @@ void showStatus() {
     }
 }
 
-// Thread to set motors based on the input struct
+// Thread to spin motors based on the input struct
 void setDrive() {
      while (true) {
         motorL.spin(vex::directionType::fwd, inputs.left, vex::velocityUnits::pct);
@@ -43,8 +45,7 @@ void setDrive() {
      }
 }
 
-// listeners controller events
-
+// listen functions controller events
 void setLeft() {
     inputs.left = Controller1.Axis3.value();
 }
@@ -57,7 +58,6 @@ void startControllerListeners() {
     Controller1.Axis3.changed(setLeft);      
     Controller1.Axis2.changed(setRight);
 }
-
 
 int main() {
     startControllerListeners();

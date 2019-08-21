@@ -2,6 +2,7 @@
  * Example of using fixed functions to drive tank
  * Useful in creating autonomous instructions
  * @author Lance Rushing <lancerushing@gmail.com>
+ * @see https://github.com/lancerushing/vex
  */
 #include "vex.h"
 
@@ -14,6 +15,9 @@ vex::controller Controller1(vex::controllerType::primary);
 // custom variables
 double turnVelocity = 50; // how fast to spin the motors for turning
 double moveVelocity = 50; // how fast to spin the motors for moving
+
+double turnRevolutions = 2;
+double moveRevolutions = 2;
 
 // Thread to update the LCD on the brain
 void showStatus() {
@@ -39,23 +43,23 @@ void stopMotors() {
 }
 
 void turnLeft() {
-    motorL.rotateFor(-1, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(1, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(-turnRevolutions, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(turnRevolutions, vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
 }
 
 void turnRight() {
-    motorL.rotateFor(1,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(-1,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(turnRevolutions,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(-turnRevolutions,  vex::rotationUnits::rev, turnVelocity, vex::velocityUnits::pct, true);
 }
 
 void moveForward() {
-    motorL.rotateFor(1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(moveRevolutions,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(moveRevolutions,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
 }
 
 void moveBackward() {
-    motorL.rotateFor(-1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
-    motorR.rotateFor(-1,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
+    motorL.rotateFor(-moveRevolutions,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, false);
+    motorR.rotateFor(-moveRevolutions,  vex::rotationUnits::rev, moveVelocity, vex::velocityUnits::pct, true);
 }
 
 void startControllerListeners() {
